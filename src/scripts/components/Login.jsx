@@ -10,12 +10,10 @@ import {
   ActivityIndicator
 } from "react-native";
 
-const Login = () => {
+const Login = ({ setActividad }) => {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
-  const [actividad, setActividad] = useState(true);
   const Enviar = () => {
-    setActividad(false);
     consultar();
   };
   const consultar = () => {
@@ -30,6 +28,7 @@ const Login = () => {
           res == "OK"
             ? (() => {
                 Alert.alert("Autenticado...");
+                setActividad(true);
               })()
             : Alert.alert("Usuario/Contraseña No Valid@´s !!!");
         })
